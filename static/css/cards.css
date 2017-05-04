@@ -6,12 +6,12 @@
       justify-content: space-between;
 }
 .card{
-      border-radius:8px;
       margin-bottom:8px;
       box-sizing:border-box;
       background:#2980b9;
-      box-shadow: 1px 1px 8px grey;
+      box-shadow: 0.5px 0.5px 4px grey;
       padding:12px;
+      transform: translate3d(0px,8px,16px);
       flex-basis:32%;
 }
 .card .card_title{
@@ -19,7 +19,7 @@
       margin-bottom: 4px;
 }
 .card .card_content{
-      opacity:0.5;
+      color:#ccc;
       font-size: 14px;
       line-height: 17px;
 }

@@ -99,9 +99,8 @@ form{
   opacity: 0.8;
   width:300px;
   padding:8px;
-  border-radius:12px;
   background:#2980b9;
-  box-shadow: 1px 1px 8px grey;
+  box-shadow: 1px 1px 5px grey;
   margin:50px auto;
 }
 
