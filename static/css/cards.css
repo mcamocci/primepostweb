@@ -1,0 +1,50 @@
+#contents{
+      display: flex;
+      flex-wrap:wrap;
+      width:80%;
+      margin:32px auto;
+      justify-content: space-between;
+}
+.card{
+      border-radius:8px;
+      margin-bottom:8px;
+      box-sizing:border-box;
+      background:#2980b9;
+      box-shadow: 1px 1px 8px grey;
+      padding:12px;
+      flex-basis:32%;
+}
+.card .card_title{
+      color:white;
+      margin-bottom: 4px;
+}
+.card .card_content{
+      opacity:0.5;
+      font-size: 14px;
+      line-height: 17px;
+}
+
+.card .signs{
+  color:white;
+  padding-right:2px;
+  padding-left:2px;
+}
+
+.card .card_operation{
+      margin-top: 4px;
+      text-align: right;
+      font-size: 14px;
+      color:#2ecc71;
+      display: inline-block;
+      float:right;
+      cursor: pointer;
+}
+
+.card .card_operation:hover{
+      margin-top: 4px;
+      text-align: right;
+      font-size: 14px;
+      color:#f1c40f;
+      cursor: pointer;
+}
+.card .card_operation
