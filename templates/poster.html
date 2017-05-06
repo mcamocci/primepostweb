@@ -11,7 +11,7 @@
           <li><a href="#">PrimePost About</a></li>
           <li><a href="#">Add a Poster</a></li>
           <li><a href="#">Contacts</a></li>
-          <li><a href="index.html">Logout</a></li>
+          <li><a href="{{url_for('logout')}}">Logout</a></li>
       </ul>
     </nav>
       <span class="line"></span>
@@ -20,10 +20,10 @@
 
         <div class="card">
           <div class="posterinfo">
-            <p class="poster_title">IFMSO</p><p class="poster_post"><span class="number">30</span> posts</p>
+            <p class="poster_title">{{name}}</p><p class="poster_post"><span class="number">30</span> posts</p>
           </div>
           <div class="manage">
-            <div id="operation"><span class="signs">&lt</span><a href="home.html">Manage</a><span class="signs">&gt</span></div>
+            <div id="operation"><span class="signs">&lt</span><a href="{{url_for('posts',id=age)}}">Manage</a><span class="signs">&gt</span></div>
           </div>
         </div>
 

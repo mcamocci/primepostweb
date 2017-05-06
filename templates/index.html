@@ -16,15 +16,15 @@
 
       <div id="contents">
               <div id="login">
-                      <form class="form" method="post" action="poster.html">
+                      <form class="form" method="post" action="{{url_for('login')}}">
                         <div class="row">
-                            <input type="email" placeholder='Username/Email'>
+                            <input type="email" name="username" placeholder="username/email"/>
                         </div>
                         <div class="row">
-                            <input type="password" placeholder='Passwrod'>
+                            <input type="password" name="password" placeholder="Password"/>
                         </div>
                         <div class="row">
-                            <input type="submit" class="btnlogin" value="Login">
+                            <input type="submit"  class="btnlogin" value="Login"/>
                         </div>
                       </form>
               </div>
