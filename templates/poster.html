@@ -17,60 +17,16 @@
       <span class="line"></span>
 
       <div id="contents">
-
-        <div class="card">
-          <div class="posterinfo">
-            <p class="poster_title">{{name}}</p><p class="poster_post"><span class="number">30</span> posts</p>
-          </div>
-          <div class="manage">
-            <div id="operation"><span class="signs">&lt</span><a href="{{url_for('posts',id=age)}}">Manage</a><span class="signs">&gt</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="posterinfo">
-            <p class="poster_title">LOAN OFFICE</p><p class="poster_post"><span class="number">30</span> posts</p>
-          </div>
-          <div class="manage">
-            <div id="operation"><span class="signs">&lt</span><a href="home.html">Manage</a><span class="signs">&gt</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="posterinfo">
-            <p class="poster_title">REGISTRER</p><p class="poster_post"><span class="number">30</span> posts</p>
-          </div>
-          <div class="manage">
-            <div id="operation"><span class="signs">&lt</span><a href="home.html">Manage</a><span class="signs">&gt</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="posterinfo">
-            <p class="poster_title">RECTOR</p><p class="poster_post"><span class="number">30</span> posts</p>
-          </div>
-          <div class="manage">
-            <div id="operation"><span class="signs">&lt</span><a href="home.html">Manage</a><span class="signs">&gt</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="posterinfo">
-            <p class="poster_title">ENTERTAINMENT</p><p class="poster_post"><span class="number">30</span> posts</p>
-          </div>
-          <div class="manage">
-            <div id="operation"><span class="signs">&lt</span><a href="home.html">Manage</a><span class="signs">&gt</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="posterinfo">
-            <p class="poster_title">LOST CASES</p><p class="poster_post"><span class="number">30</span> posts</p>
-          </div>
-          <div class="manage">
-            <div id="operation"><span class="signs">&lt</span><a href="home.html">Manage</a><span class="signs">&gt</span></div>
-          </div>
-        </div>
+        {% for poster in posterInfos%}
+              <div class="card">
+                <div class="posterinfo">
+                  <p class="poster_title">{{poster.poster_name}}</p><p class="poster_post"><span class="number">{{poster.posts}}</span> posts</p>
+                </div>
+                <div class="manage">
+                  <div id="operation"><span class="signs">&lt</span><a href="{{url_for('posts',id=poster.poster_id)}}">Manage</a><span class="signs">&gt</span></div>
+                </div>
+              </div>
+        {%endfor%}
 
       </div>
 </body>

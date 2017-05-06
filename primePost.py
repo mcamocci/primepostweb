@@ -4,19 +4,22 @@ from flask import session
 from flask import redirect
 from flask import render_template
 from flask import url_for
+from dao import posterInfoDao
 
 app=Flask(__name__)
 
 @app.route("/")
 def index():
     if "user_id" in session:
-        return render_template("poster.html")
+        return redirect(url_for('home'))
     return render_template("index.html")
 
 @app.route("/home")
 def home():
     if "user_id" in session:
-        context={'age':22,'name':"Graciana"}
+        postersObject=posterInfoDao.PosterInfoDao()
+        posters=postersObject.getAllPosterInfo()
+        context={'posterInfos':posters}
         return render_template("poster.html",**context)
     else:
         return render_template("index.html")
