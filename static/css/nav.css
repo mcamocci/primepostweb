@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Handlee');
+
+*{
+    margin:0px;
+    padding:0px;
+    color:black;
+    opacity: 1;
+    font-family:"Helvetica Neue",Helvetica;
+}
+
+.line{
+   height:1px;
+   display: block;
+   opacity: 0.2;
+   background: grey;
+}
+
+#project_name{
+  opacity:0.6;
+  font-size: 20px;
+  margin: 12px 0px 12px 30px;
+}
+
+.post{
+  color:#2980b9;
+  font-size: 18px;
+  font-family: 'Handlee', cursive;
+}
+
+ul{
+  display:flex;
+  padding:0px;
+  justify-content: flex-end;
+  margin:0px;
+}
+
+ul li{
+   margin:12px;
+   list-style: none;
+}
+ul li a{
+  text-decoration: none;
+}
+
+ul li{
+    text-decoration: none;
+    padding:2px 5px;
+    display: block;
+    color:black;
+    font-size: 12px;
+    border-right:2px solid grey;
+
+}
+ul li:first-child{
+    text-decoration: none;
+    padding:2px 5px;
+    font-style: bold;
+    color:black;
+}
+ul li:last-child{
+  border:none;
+}
+ul li:first-child{
+    font-style: bold;
+}
+ul li{
+    opacity: 0.35;
+}
+ul li:hover{
+  opacity: 0.6;
+  color:#2ecc71;
+}
+
+
+nav{
+  display: flex;
+  justify-content: space-between;
+}
+
+#techpromo{
+  font-size: 16px;
+  color:#2ecc71;
+  text-align: center;
+}

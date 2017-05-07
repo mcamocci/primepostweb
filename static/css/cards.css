@@ -47,4 +47,9 @@
       color:#f1c40f;
       cursor: pointer;
 }
-.card .card_operation
+#card_flex_box{
+      background: yellow;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+}

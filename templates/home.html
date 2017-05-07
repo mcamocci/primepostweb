@@ -17,40 +17,33 @@
       <span class="line"></span>
 
       <div id="contents">
-
-        <div class="card">
-          <div id="item_holder">
-            <p class="card_title">POST ONE</p>
-            <p class="card_content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-            <p class="card_operation"><span class="signs">&lt</span>Delete<span class="signs">&gt</span></p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div id="item_holder">
-            <p class="card_title">POST TWO</p>
-            <p class="card_content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-          <p class="card_operation"><span class="signs">&lt</span>Delete<span class="signs">&gt</span></p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div id="item_holder">
-            <p class="card_title">POST FOUR</p>
-            <p class="card_content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-            <p class="card_operation"><span class="signs">&lt</span>Delete<span class="signs">&gt</span></p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div id="item_holder">
-            <p class="card_title">FIVE</p>
-            <p class="card_content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-            <p class="card_operation"><span class="signs">&lt</span>Delete<span class="signs">&gt</span></p>
-          </div>
-        </div>
-
-
+        {%if posts|length>0 %}
+            {%for post in posts%}
+                  <div class="card">
+                     <div id="item_holder">
+                          <p class="card_title">{{post.date}}</p>
+                              <div id="card_flex_box">
+                                  <p class="card_content">{{post.content}}</p>
+                                  <div class="card_operation">
+                                      <span class="signs">&lt</span>
+                                      <a href="{{url_for('deletePost',id=post.post_id)}}">Delete</a>
+                                      <span class="signs">&gt</span>
+                                   </div>
+                            </div>
+                      </div>
+                  </div>
+          {%endfor%}
+        {%else%}
+            <div class="card" style="margin:auto;">
+                <div id="item_holder">
+                    <div class="card_content" style="color:white; text-align:center">
+                      <span style="color:yellow;margin-right:4px;">(info)</span>
+                        Content from this uploader are either deleted or not published at all!
+                    </div>
+                </div>
+              </div>
+           </div>
+        {%endif%}
       </div>
 </body>
 <html>
