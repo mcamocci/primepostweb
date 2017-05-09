@@ -1,5 +1,5 @@
 #contents{
-      display: flex;
+      display:flex;
       flex-wrap:wrap;
       width:80%;
       margin:32px auto;
@@ -9,47 +9,58 @@
       margin-bottom:8px;
       box-sizing:border-box;
       background:#2980b9;
-      box-shadow: 0.5px 0.5px 4px grey;
+      box-shadow:0.5px 0.5px 4px grey;
       padding:12px;
-      transform: translate3d(0px,8px,16px);
+      transform:translate3d(0px,8px,16px);
       flex-basis:32%;
 }
-.card .card_title{
+.card.card_title{
       color:white;
-      margin-bottom: 4px;
+      margin-bottom:4px;
 }
-.card .card_content{
+.card.card_content{
       color:#ccc;
-      font-size: 14px;
-      line-height: 17px;
+      font-size:14px;
+      line-height:17px;
 }
 
-.card .signs{
+.card.signs{
   color:white;
   padding-right:2px;
   padding-left:2px;
 }
 
-.card .card_operation{
-      margin-top: 4px;
-      text-align: right;
-      font-size: 14px;
-      color:#2ecc71;
-      display: inline-block;
-      float:right;
-      cursor: pointer;
+#flask_message{
+    margin-top:4px;
+    text-align:right;
+    font-size:14px;
+    color:#2ecc71;
+    display:inline-block;
+    float:right;
+    cursor: pointer;
 }
 
-.card .card_operation:hover{
-      margin-top: 4px;
-      text-align: right;
-      font-size: 14px;
+.card.card_operation{
+      margin-top:4px;
+      text-align:right;
+      font-size:14px;
+      color:#2ecc71;
+      background:green;
+      display:inline-block;
+      float:right;
+      cursor:pointer;
+}
+
+.card.card_operation:hover{
+      margin-top:4px;
+      text-align:right;
+      font-size:14px;
       color:#f1c40f;
-      cursor: pointer;
+      cursor:pointer;
 }
 #card_flex_box{
-      background: yellow;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      background:yellow;
+      display:flex;
+      flex-direction:row;
+      justify-content:space-between;
 }

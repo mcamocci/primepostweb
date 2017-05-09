@@ -12,7 +12,8 @@ class PosterInfoDao:
         pass
 
     def getAllPosterInfo(self):
-        cursor=Database.Database.getCursor()
+        cursorConnection=Database.Database.getCursorConnection()
+        cursor=cursorConnection['cursor']
         rows=cursor.execute("SELECT uploader.id as poster_id,uploader.name as poster_name,count(post.poster_id) as posts FROM uploader LEFT JOIN post ON uploader.id=post.poster_id GROUP BY uploader.id;")
         return cursor.fetchall()
 

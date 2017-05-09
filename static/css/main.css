@@ -95,6 +95,15 @@ input{
     text-align: center;
 }
 
+.message{
+    padding:8px;
+    margin:10px 10px 0px 10px;
+    border:none;
+    color:grey;
+    background:#ecf0f1;
+    text-align: center;
+}
+
 form{
   opacity: 0.8;
   width:300px;

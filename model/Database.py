@@ -9,14 +9,15 @@ class Database:
         pass
 
     @staticmethod
-    def getCursor(**kwargs):
+    def getCursorConnection(**kwargs):
         host=kwargs.get("host","localhost")
         username=kwargs.get("username","root")
         database_name=kwargs.get("database","mediaroseDb")
         password=kwargs.get("password","haikarose")
 
         database=pymysql.connect(host,username,password,database_name)
-        return database.cursor(pymysql.cursors.DictCursor)
+        cursorConnection={'cursor':database.cursor(pymysql.cursors.DictCursor),'connection':database}
+        return cursorConnection;
 
     def closeConnection(self):
         pass
