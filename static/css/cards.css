@@ -1,66 +1,76 @@
 #contents{
-      display:flex;
-      flex-wrap:wrap;
       width:80%;
       margin:32px auto;
-      justify-content: space-between;
-}
-.card{
-      margin-bottom:8px;
-      box-sizing:border-box;
-      background:#2980b9;
-      box-shadow:0.5px 0.5px 4px grey;
-      padding:12px;
-      transform:translate3d(0px,8px,16px);
-      flex-basis:32%;
-}
-.card.card_title{
-      color:white;
-      margin-bottom:4px;
-}
-.card.card_content{
-      color:#ccc;
-      font-size:14px;
-      line-height:17px;
+	    padding:0px;
 }
 
-.card.signs{
-  color:white;
+#content_wrapper{
+     display: flex;
+     flex-direction: column;
+}
+
+.card .number{
+      background: #1abc9c;
+      padding:2px;
+      color:white;
+      border-radius: 100%;
+}
+.card .poster_post{
+      margin-right: 12px;
+}
+.card{
+      margin-bottom:20px;
+      box-sizing:border-box;
+	    background:#95a5a6;
+      box-shadow: 0.5px 0.5px 4px grey;
+      transform: translate3d(0px,8px,16px);
+      align-items: flex-start;
+
+}
+.card .posterinfo{
+      display: flex;
+      padding: 8px;
+	  color:white;
+      justify-content: space-between;
+      background:#34495e;
+}
+
+.card .content{
+      display: flex;
+      padding: 8px;
+      flex:1;
+      justify-content: space-between;
+	    color:white;
+      background:#999999;
+}
+
+.card .content .poster_content, .poster_title{
+	color:white;
+}
+
+.card .operation{
+      display: flex;
+      justify-content: space-between;
+      background:inherit;
+}
+
+.card .manage{
+      padding: 8px;
+      text-align:right;
+      color:#2ecc71;
+}
+.card .manage #operation a{
+      color:white;
+      text-decoration: none;
+      cursor:pointer;
+}
+
+.card .signs{
+  color:inherit;
   padding-right:2px;
   padding-left:2px;
 }
 
-#flask_message{
-    margin-top:4px;
-    text-align:right;
-    font-size:14px;
-    color:#2ecc71;
-    display:inline-block;
-    float:right;
-    cursor: pointer;
-}
-
-.card.card_operation{
-      margin-top:4px;
-      text-align:right;
-      font-size:14px;
-      color:#2ecc71;
-      background:green;
-      display:inline-block;
-      float:right;
-      cursor:pointer;
-}
-
-.card.card_operation:hover{
-      margin-top:4px;
-      text-align:right;
-      font-size:14px;
+.card .manage #operation a:hover{
       color:#f1c40f;
-      cursor:pointer;
-}
-#card_flex_box{
-      background:yellow;
-      display:flex;
-      flex-direction:row;
-      justify-content:space-between;
 }

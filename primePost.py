@@ -11,6 +11,22 @@ import os
 app=Flask(__name__)
 app.config['UPLOAD_FOLDER']='/var/www/html/superbell_backend/mediaUploads'
 
+
+########################################################################################
+########################################################################################
+@app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
+
+def dated_url_for(endpoint, **values):
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            file_path = os.path.join(app.root_path,
+                                     endpoint, filename)
+            values['q'] = int(os.stat(file_path).st_mtime)
+    return url_for(endpoint, **values)
+
 ########################################################################################
 ########################################################################################
 #you will be redirect if not logged in else you directed to poster aka home
@@ -40,7 +56,7 @@ def login():
     if request.method=="POST":
         username=request.form.get("username",None)
         if  username != None:
-            session["user_id"]=username
+            session["user_id"]=1
             return redirect(url_for('home'))
         else:
             return "please fill the form {}".format(str(request.form.get("username","emmanuel")))
@@ -101,25 +117,25 @@ def publishPost():
                 file.save(os.path.join(app.config["UPLOAD_FOLDER"],filename))
                 uploaded_file_path.append(filename)
 
-        #user_id=session["user_id"]
-        user_id=1
+        user_id=session["user_id"]
+        poster_id=session['current_poster']
 
         inserted_post_id=postDao.PostDao().insertPost(user_id,postDescription)
 
         if(len(uploaded_file_path)>0):
             for fileurl in uploaded_file_path:
                 postDao.PostDao().insertPostResource(inserted_post_id,fileurl)
-        return redirect(url_for('publish'))
+        return redirect(url_for('posts',id=poster_id))
 
     else:
-        return redirect(url_for('publish'))
+        return redirect(url_for('posts',id=poster_id))
 
 ########################################################################################
 ########################################################################################
 @app.route("/deletePost/<int:id>")
 def deletePost(id=0):
     row_affected=postDao.PostDao().deletePost(id)
-    flash("The delete operation has completed successfully")
+    flash("The delete operation has completed successfully , Click to dismiss")
     if "current_poster" in session:
         return redirect(url_for('posts',id=session['current_poster']))
     return redirect(url_for('index'))

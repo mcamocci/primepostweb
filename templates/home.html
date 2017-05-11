@@ -1,21 +1,17 @@
 <!doctype html>
 <head>
-      <title>css learning</title>      
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <!-- jQuery library -->
+      <title>css learning</title>
+    <!---  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <!-- Latest compiled JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
       <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
       <link rel="stylesheet" href="{{url_for('static',filename='css/cards.css')}}">
       <style>
-              #flask_message:hover{
-                text-align: center;
-                display:none;
-                background:#2ecc71;
-                color:white;
-                margin:0px auto;
+              #message{
+                background:#ecf0f1;
+                color:red;
+                display: block;
+                margin:12px auto;
                 cursor:pointer;
                 padding:12px;
               }
@@ -23,12 +19,12 @@
 </head>
 <body>
     <nav>
-      <p id="project_name"><span id="techpromo">(Haikarose) </span>Prime<span class="post">Post &copy2017</span></p>
+      <p id="project_name">PrimePost &copy2017</p>
       <ul>
-          <li><a href="{{url_for('index')}}">Home</a></li>
-          <li><a href="{{url_for('publish')}}">Publish post</a></li>
-          <li><a href="#">Contacts</a></li>
-          <li><a href="{{url_for('logout')}}">Logout</a></li>
+          <li><a href="{{url_for('index')}}">HOME</a></li>
+          <li><a href="{{url_for('publish')}}">PUBLISH</a></li>
+          <li><a href="#">CONTACTS</a></li>
+          <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
       </ul>
     </nav>
       <span class="line"></span>
@@ -37,11 +33,7 @@
           {%with msgs=get_flashed_messages()%}
               {%if msgs%}
                   {%for msg in msgs%}
-                  <div class="alert alert-success alert-dismissible" role="alert" style="margin-top:10px;">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden=true>
-                        &times;</span></button>
-                      {{msg}}
-                  </div>
+                    <p id="message">{{msg}}</p>
                   {%endfor%}
               {%endif%}
           {%endwith%}
@@ -50,25 +42,25 @@
       <div id="contents">
         {%if posts|length>0 %}
             {%for post in posts%}
-                  <div class="card">
-                     <div id="item_holder">
-                          <p class="card_title">{{post.date}}</p>
-                              <div id="card_flex_box">
-                                  <p class="card_content">{{post.content}}</p>
-                                  <div class="card_operation">
-                                      <span class="signs">&lt</span>
-                                      <a href="{{url_for('deletePost',id=post.post_id)}}">Delete</a>
-                                      <span class="signs">&gt</span>
-                                   </div>
-                            </div>
-                      </div>
+            <div class="card">
+                <div class="posterinfo">
+                  <p class="poster_title">{{post.date}}</p>
+                </div>
+                <div id="content_wrapper">
+            		  <div class="content">
+            		  <p class="poster_content">{{post.content}}</p>
+        		      </div>
+                  <div class="manage">
+                  <div id="operation"><span class="signs">&lt</span><a href="{{url_for('deletePost',id=post.post_id)}}">Delete</a><span class="signs">&gt</span></div>
                   </div>
+                </div>
+          </div>
           {%endfor%}
         {%else%}
             <div class="card" style="margin:auto;">
                 <div id="item_holder">
-                    <div class="card_content">
-                      <span >(info)</span>
+                    <div class="card_content" style="padding:12px;">
+                      <span style="color:#2c3e50;">(info)</span>
                         Content from this Category are either deleted or not published at all!
                     </div>
                 </div>
@@ -76,5 +68,13 @@
            </div>
         {%endif%}
       </div>
+      <script>
+          window.onload=function(e){
+                var closebutton=document.getElementById("message");
+                closebutton.onclick=function(){
+                    closebutton.style.display="none";
+                }
+          };
+      </script>
 </body>
 <html>

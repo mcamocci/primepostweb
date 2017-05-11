@@ -3,7 +3,7 @@
 *{
     margin:0px;
     padding:0px;
-    color:black;
+    color:white;
     opacity: 1;
     font-family:"Helvetica Neue",Helvetica;
 }
@@ -21,11 +21,6 @@
   margin: 12px 0px 12px 30px;
 }
 
-.post{
-  color:#2980b9;
-  font-size: 18px;
-  font-family: 'Handlee', cursive;
-}
 
 ul{
   display:flex;
@@ -46,7 +41,7 @@ ul li{
     text-decoration: none;
     padding:2px 5px;
     display: block;
-    color:black;
+    color:#ecf0f1;
     font-size: 12px;
     border-right:2px solid grey;
 
@@ -55,7 +50,6 @@ ul li:first-child{
     text-decoration: none;
     padding:2px 5px;
     font-style: bold;
-    color:black;
 }
 ul li:last-child{
   border:none;
@@ -68,7 +62,7 @@ ul li{
 }
 ul li:hover{
   opacity: 0.6;
-  color:#2ecc71;
+  color:#bdc3c7;
 }
 .row{
   display: flex;
@@ -83,6 +77,7 @@ ul li:hover{
 
 nav{
   display: flex;
+  background:#34495e;
   justify-content: space-between;
 }
 
@@ -95,40 +90,25 @@ input{
     text-align: center;
 }
 
-.message{
-    padding:8px;
-    margin:10px 10px 0px 10px;
-    border:none;
-    color:grey;
-    background:#ecf0f1;
-    text-align: center;
-}
-
-form{
-  opacity: 0.8;
+.form{
+  opacity:0.8;
   width:300px;
   padding:8px;
-  background:#2980b9;
-  box-shadow: 1px 1px 5px grey;
+  background:#34495e;
+  box-shadow:1px 1px 5px grey;
   margin:50px auto;
 }
 
 .btnlogin{
   margin-bottom:10px;
-  background: #34495e;
-  transition: .2s ease;
+  background:#3498db;
+  transition:0.2s ease;
 }
 .btnlogin:hover{
   color:white;
-  background: #2c3e50;
-  box-sizing: border-box;
+  background:#2980b9;
+  box-sizing:border-box;
   /*border:0.5px solid grey;*/
-  transition: 0.2s ease;
+  transition:0.2s ease;
   cursor:pointer;
-}
-
-#techpromo{
-  font-size: 16px;
-  color:#2ecc71;
-  text-align: center;
 }

@@ -9,13 +9,15 @@ from model import PosterInfo,Database
 class PosterInfoDao:
 
     def __init__(self):
-        pass
+        cursorConnection=Database.Database.getCursorConnection()
+        self.cursor=cursorConnection['cursor']
+        self.connection=cursorConnection['connection']
 
     def getAllPosterInfo(self):
-        cursorConnection=Database.Database.getCursorConnection()
-        cursor=cursorConnection['cursor']
-        rows=cursor.execute("SELECT uploader.id as poster_id,uploader.name as poster_name,count(post.poster_id) as posts FROM uploader LEFT JOIN post ON uploader.id=post.poster_id GROUP BY uploader.id;")
-        return cursor.fetchall()
+        rows=self.cursor.execute("SELECT uploader.id as poster_id,uploader.name as poster_name,count(post.poster_id) as posts FROM uploader LEFT JOIN post ON uploader.id=post.poster_id GROUP BY uploader.id;")
+        self.connection.close()
+        return self.cursor.fetchall()
+
 
     def getAllPosterPost(self):
         pass
@@ -27,5 +29,6 @@ class PosterInfoDao:
 def main():
     postdao=PosterInfoDao()
     print(postdao.getAllPosterInfo())
+
 
 if __name__=="__main__":main()

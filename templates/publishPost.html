@@ -1,22 +1,21 @@
 <!doctype html>
 <head>
       <title>PrimePost</title>
-      <link rel="stylesheet" href="../static/css/main.css">
+      <link rel="stylesheet" href="../static/css/main.css?q=1280549780">
 </head>
 <body>
     <nav>
-      <p id="project_name"><span id="techpromo">(Haikarose) </span>Prime<span class="post">Post &copy2017</span></p>
+    <p id="project_name">PrimePost &copy2017</p>
       <ul>
-          <li><a href="#">PrimePost About</a></li>
-          <li><a href="#">Forgot password</a></li>
-          <li><a href="{{url_for('logout')}}">logout</a></li>
+          <li><a href="{{url_for('index')}}">HOME</a></li>
+          <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
       </ul>
     </nav>
       <span class="line"></span>
 
       <div id="contents">
               <div id="login">
-                      <form class="form" method="post" action="http://localhost/" enctype="multipart/form-data">
+                      <form class="form" method="post" action="{{url_for('publish')}}" enctype="multipart/form-data">
                         <div class="row" style="display:flex;">
                             <textarea class="message" style="padding:8px;
                             margin:10px 10px 0px 10px;
@@ -25,11 +24,10 @@
                             flex:1;
                             color:grey;
                             background:#ecf0f1;
-                            text-align: center;" name="username" placeholder="Write the message here"></textarea>
+                            text-align: center;" name="CONTENT" placeholder="Write the message here"></textarea>
                         </div>
                         <div class="row">
-                           <input type="text" value="{{user_id}}" hidden="true"/>
-                            <input type="file" name="RESOURCE[]"/>
+                            <input type="file" name="RESOURCE[]" multiple/>
                         </div>
                         <div class="row">
                             <input type="submit"  class="btnlogin" value="PUBLISH POST"/>

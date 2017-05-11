@@ -3,11 +3,14 @@
       flex-wrap:wrap;
       width:80%;
       margin:32px auto;
+	    padding:0px;
       justify-content: space-between;
 }
 .card .number{
       background: #1abc9c;
       padding:2px;
+      min-width: 50px;
+      min-height: 50px;
       color:white;
       border-radius: 100%;
 }
@@ -18,6 +21,7 @@
       margin-bottom:20px;
       box-sizing:border-box;
       background:#2980b9;
+      align-items: flex-start;
       box-shadow: 0.5px 0.5px 4px grey;
       transform: translate3d(0px,8px,16px);
       flex-basis:32%;
@@ -26,11 +30,23 @@
       display: flex;
       padding: 8px;
       justify-content: space-between;
-      background:#ecf0f1;
+      background:#34495e;;
 }
-.card .operation{
+
+.card .content{
       display: flex;
       padding: 8px;
+      justify-content: space-between;
+	    color:white;
+      background:#999999;
+}
+
+.card .content .poster_content{
+	color:white;
+}
+
+.card .operation{
+      display: flex;
       justify-content: space-between;
       background:#ecf0f1;
 }
@@ -54,4 +70,5 @@
 
 .card .manage #operation a:hover{
       color:#f1c40f;
+      align-items: flex-start;
 }
