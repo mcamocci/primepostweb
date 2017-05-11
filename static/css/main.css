@@ -102,6 +102,7 @@ input{
 .btnlogin{
   margin-bottom:10px;
   background:#3498db;
+  color:white;
   transition:0.2s ease;
 }
 .btnlogin:hover{
