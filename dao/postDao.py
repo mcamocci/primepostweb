@@ -55,6 +55,6 @@ class PostDao:
     def insertPostResource(self,post_id,file_url):
         querry="INSERT INTO resource(url,type, post_id) VALUES (%s , %s ,%s)"
         file_extension=file_url.split('.')[1]
-        self.cursor.execute(querry,("192.168.43.234/superbell_backend/mediaUploads/"+file_url,file_extension,post_id))
+        self.cursor.execute(querry,("http://192.168.43.234/superbell_backend/mediaUploads/"+file_url,file_extension,post_id))
         self.connection.commit()
         self.connection.close()

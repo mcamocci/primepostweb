@@ -11,6 +11,16 @@ import os
 app=Flask(__name__)
 app.config['UPLOAD_FOLDER']='/var/www/html/superbell_backend/mediaUploads'
 
+####some test to be deleted later###
+def haikarose_login_required(sessionObject=None):
+    def decorated(fun):
+        def wrapper():
+            if "user_id" in sessionObject:
+                return redirect(url_for('home'))
+            else:
+                return redirect(url_for('home'))
+        return wrapper
+    return decorated
 
 ########################################################################################
 ########################################################################################
@@ -31,10 +41,19 @@ def dated_url_for(endpoint, **values):
 ########################################################################################
 #you will be redirect if not logged in else you directed to poster aka home
 @app.route("/")
+@haikarose_login_required(session)
 def index():
-    if "user_id" in session:
-        return redirect(url_for('home'))
+    #if "user_id" in session:
+    #    return redirect(url_for('home'))
     return render_template("index.html")
+
+
+@haikarose_login_required(sessionObject=session)
+@app.route("/test/home")
+def testhome():
+    return "you have tested it"
+
+###endof test####
 
 ########################################################################################
 ########################################################################################
