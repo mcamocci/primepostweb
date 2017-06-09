@@ -24,9 +24,10 @@
         <div id="upperBox">
           <br>
         <div id="msgbox">No new post published</div>
-        <form class="form" method="post" action="{{url_for('publishPost')}}" enctype="multipart/form-data">
+        <form class="form" method="post" action="{{url_for('publishPost')}}"
+         enctype="multipart/form-data" >
           <textarea id="PublishTextField" name="CONTENT" placeholder="write your message here."></textarea>
-          <input type="file" name="RESOURCES[]" id="fileToUpload">
+          <input type="file" name="RESOURCES[]" id="fileToUpload" multiple>
           <br/>
           <input type="submit" value="publish post" id="publishBTN"/>
         </form>
