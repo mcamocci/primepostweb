@@ -2,19 +2,19 @@
 <html>
   <head>
     <title>PrimePost</title>
-    <link rel="stylesheet" href="../static/css/denisStyle.css?q=1280549780">    
+    <link rel="stylesheet" href="../static/css/denisStyle.css?q=1280549780">
   </head>
   <body>
     <div id="container">
       <div id="header">
           <h1 style="font-family:century gothic">Primepost</h1>
-        <span id="date">Wednesday, 7 June 2017 </span>
+        <span id="date">{{tarehe}}</span>
       </div>
           <hr>
       <div id="navigation">
           <ul>
             <li><a href="{{url_for('index')}}">home</a></li>
-            <li><a href="{{url_for('posts',id=0)}}">view post</a></li>
+            <li><a href="{{url_for('posts')}}">view published posts</a></li>
           </ul>
           <span id="logOUT">
             <a href="{{url_for('logout')}}">SignOut</a>
@@ -24,7 +24,7 @@
         <div id="upperBox">
           <br>
         <div id="msgbox">No new post published</div>
-        <form class="form" method="post" action="{{url_for('publish')}}" enctype="multipart/form-data">
+        <form class="form" method="post" action="{{url_for('publishPost')}}" enctype="multipart/form-data">
           <textarea id="PublishTextField" name="CONTENT" placeholder="write your message here."></textarea>
           <input type="file" name="RESOURCES[]" id="fileToUpload">
           <br/>

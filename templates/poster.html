@@ -11,7 +11,7 @@
     <div id="container">
       <div id="header">
           <h1 style="font-family:century gothic">Primepost</h1>
-        <span id="date">Wednesday, 7 June 2017 </span>
+        <span id="date">{{tarehe}}</span>
       </div>
           <hr>
       <div id="navigation">
@@ -42,9 +42,9 @@
 			   <tr>
 		        <td>{{poster.posts}}</td>
 		        <td>{{poster.poster_name}}</td>
-		        <td><a href="{{url_for('publish')}}">post new</td>
+		        <td><a href="{{url_for('publish',id=poster.poster_id)}}">Publish a post</td>
 		        <td>delete</td>
-		      </tr>      
+		      </tr>
 		    {%endfor%}
         </table>
       </div>
