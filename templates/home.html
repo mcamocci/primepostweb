@@ -6,6 +6,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
       <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
       <link rel="stylesheet" href="{{url_for('static',filename='css/cards.css')}}">
+	  <link rel="stylesheet" href="../static/css/denisStyle.css?q=1280549780">
       <style>
               #message{
                 background:#ecf0f1;
@@ -15,19 +16,63 @@
                 cursor:pointer;
                 padding:12px;
               }
+
+ #upperBox{
+          width: 300px;
+          padding:  0 5px;
+          background:;
+
+        }
+        #textBox1,#textBox2{
+          width: 100%;
+          height: 35px;
+          border-radius:3px 3px 0 0 !important;
+          border:1px solid #DDE2DE;
+          font-size: 10pt;
+          text-indent: 15px;
+          background-color:#F4F4F4;
+          color: #537183;
+        }
+        #textBox1:focus,#textBox2:focus{
+        outline: none;
+        }
+        #textBox1:hover,#textBox2:hover{
+        background-color: #FFF;
+        }
+        #textBox2{
+          border-radius: 0px 0px 3px 3px !important;
+        }
+        #OpenRegBTN{
+          margin-top: 6px;
+          width: 100%;
+          height: 30px;
+          border: none;
+          border-radius: 3px !important;
+          background-color: #25A2F7;
+          color: #FFFFFF;
+          font-size: 12pt;
+
+        }
+
       </style>
 </head>
 <body>
-    <nav>
-      <p id="project_name">PrimePost &copy2017</p>
-      <ul>
-          <li><a href="{{url_for('index')}}">HOME</a></li>
-          <li><a href="{{url_for('publish')}}">PUBLISH</a></li>
-          <li><a href="#">CONTACTS</a></li>
-          <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
-      </ul>
-    </nav>
-      <span class="line"></span>
+
+<div id="container">
+       <div id="header">
+          <h1 style="font-family:century gothic">Primepost</h1>
+        <span id="date">Wednesday, 7 June 2017 </span>
+      </div>
+          <hr>
+      <div id="navigation">
+          <ul>
+            <li><a href="{{url_for('index')}}">home</a></li>
+            <li><a href="{{url_for('posts',id=0)}}">view post</a></li>
+          </ul>
+          <span id="logOUT">
+            <a href="{{url_for('logout')}}">SignOut</a>
+          </span>
+      </div>
 
       <div class="container-fluid" style="min-height:100px;width:60%">
           {%with msgs=get_flashed_messages()%}

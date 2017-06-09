@@ -4,9 +4,10 @@ from flask import session
 from flask import redirect
 from flask import render_template
 from flask import url_for,flash
-from dao import posterInfoDao,postDao
+from dao import posterInfoDao,postDao,loginDao
 from werkzeug import secure_filename
 import os
+
 
 app=Flask(__name__)
 app.config['UPLOAD_FOLDER']='/var/www/html/superbell_backend/mediaUploads'
@@ -21,6 +22,7 @@ def haikarose_login_required(sessionObject=None):
                 return redirect(url_for('home'))
         return wrapper
     return decorated
+
 
 ########################################################################################
 ########################################################################################
@@ -41,19 +43,10 @@ def dated_url_for(endpoint, **values):
 ########################################################################################
 #you will be redirect if not logged in else you directed to poster aka home
 @app.route("/")
-@haikarose_login_required(session)
 def index():
-    #if "user_id" in session:
-    #    return redirect(url_for('home'))
+    if "user_id" in session:
+        return redirect(url_for('home'))
     return render_template("index.html")
-
-
-@haikarose_login_required(sessionObject=session)
-@app.route("/test/home")
-def testhome():
-    return "you have tested it"
-
-###endof test####
 
 ########################################################################################
 ########################################################################################
@@ -74,11 +67,19 @@ def home():
 def login():
     if request.method=="POST":
         username=request.form.get("username",None)
-        if  username != None:
+        password=request.form.get("password",None)
+        result=loginDao.LoginDao.login(username,password)
+        if result:
+            session["user_id"]=1
+            return redirect(url_for('home'))
+        else:
+            return redirect(url_for('index'))
+        """if  username != None:
             session["user_id"]=1
             return redirect(url_for('home'))
         else:
             return "please fill the form {}".format(str(request.form.get("username","emmanuel")))
+        """
     else:
         return "you are faking request"
 
@@ -123,6 +124,16 @@ def publish():
 
 ########################################################################################
 ########################################################################################
+
+
+#adding new category for posting information.
+@app.route("/addCategory")
+def addCategory():
+    return render_template("addCategory.html")
+
+########################################################################################
+########################################################################################
+
 @app.route("/publish",methods=["POST"])
 def publishPost():
     if request.method=="POST":
@@ -139,7 +150,7 @@ def publishPost():
         user_id=session["user_id"]
         poster_id=session['current_poster']
 
-        inserted_post_id=postDao.PostDao().insertPost(user_id,postDescription)
+        inserted_post_id=postDao.PostDao().insertPost(poster_id,postDescription)
 
         if(len(uploaded_file_path)>0):
             for fileurl in uploaded_file_path:
@@ -162,4 +173,5 @@ def deletePost(id=0):
 
 if __name__=="__main__":
     app.secret_key="haikarose"
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0')
+

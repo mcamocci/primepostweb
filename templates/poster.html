@@ -1,32 +1,55 @@
-<!doctype html>
-<head>
-      <title>css learning</title>
-      <link rel="stylesheet" href="../static/css/main.css?q=1280549780">
-      <link rel="stylesheet" href="../static/css/posters.css?q=1280549780">
-</head>
-<body>
-    <nav>
-      <p id="project_name">PrimePost &copy2017</p>
-      <ul>
-          <li><a href="#">ABOUT</a></li>
-          <li><a href="#">ADD CATEGORY</a></li>
-          <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
-      </ul>
-    </nav>
-      <span class="line"></span>
 
-      <div id="contents">
-        {% for poster in posterInfos%}
-              <div class="card">
-                <div class="posterinfo">
-                  <p class="poster_title">{{poster.poster_name}}</p><p class="poster_post"><span class="number">{{poster.posts}}</span> posts</p>
-                </div>
-                <div class="manage">
-                  <div id="operation"><span class="signs">&lt</span><a href="{{url_for('posts',id=poster.poster_id)}}">Manage</a><span class="signs">&gt</span></div>
-                </div>
-              </div>
-        {%endfor%}
-
-      </div>
-</body>
 <html>
+  <head>
+    <title>PrimePost</title>
+    <link rel="stylesheet" href="../static/css/denisStyle.css?q=1280549780">
+    <style type="text/css">
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <h1 style="font-family:century gothic">Primepost</h1>
+        <span id="date">Wednesday, 7 June 2017 </span>
+      </div>
+          <hr>
+      <div id="navigation">
+          <ul>
+            <li><a href="">home</a></li>
+          </ul>
+          <span id="logOUT">
+            <a href="{{url_for('logout')}}">SignOut</a>
+          </span>
+      </div>
+      <div id="contentBox">
+        <div id="upperBox">
+          <br>
+        <div id="msgbox">There is no any category added.</div>
+        <form>
+          <input type="text" id="addCatField" placeholder="Write here a new category." />
+          <input type="submit" value="Add new" id="addBTN"/>
+        </form>
+      </div>
+      <div id="lowerBox">
+        <table id="viewCtgTB">
+          <tr>
+            <th>post counts.</th>
+            <th>Category Name</th>
+            <th colspan="2">Actions</th>
+          </tr>
+			{% for poster in posterInfos%}
+			   <tr>
+		        <td>{{poster.posts}}</td>
+		        <td>{{poster.poster_name}}</td>
+		        <td><a href="{{url_for('publish')}}">post new</td>
+		        <td>delete</td>
+		      </tr>      
+		    {%endfor%}
+        </table>
+      </div>
+    </di>
+
+    </div><!--closing container tag-->
+  </body>
+</html>
