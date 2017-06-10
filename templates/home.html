@@ -1,125 +1,107 @@
-<!doctype html>
-<head>
-      <title>css learning</title>
-    <!---  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-      <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
-      <link rel="stylesheet" href="{{url_for('static',filename='css/cards.css')}}">
-	  <link rel="stylesheet" href="../static/css/denisStyle.css?q=1280549780">
-      <style>
-              #message{
-                background:#ecf0f1;
-                color:red;
-                display: block;
-                margin:12px auto;
-                cursor:pointer;
-                padding:12px;
-              }
 
- #upperBox{
-          width: 300px;
-          padding:  0 5px;
-          background:;
+<html>
+  <head>
+    <title>PrimePost</title>
+    <link rel="stylesheet" href="../static/css/denisStyle.css?q=1280549780">
+<link rel="stylesheet" href="iconSource/css/font-awesome.min.css">
+    <style type="text/css">
+    #contentBox{
+      width: 80% !important;
+      height: auto;
+      margin: 20px auto;
+      background:#f0f1f2;
+    }
+    #postViewContainer{
+      width:95%;
+      min-height: 40px;
+      background: #FCFCFD;
+      padding: 25px;
+      position: relative;
+      margin-top: 38px;
+      filter: drop-shadow( -1px 0px 2px rgba(0,0,0,.15));
+		-webkit-filter: drop-shadow( -1px 0px 2px rgba(0,0,0,.15));
+		-moz-filter: drop-shadow( -1px 0px 2px rgba(0,0,0,.25));
+      font-family: 'PT Sans', sans-serif;
+      font-size: 11pt;
+      color: grba(0,0,0,.1);
+    }
+    #deleteBtn{
+      position: absolute;
+      top: -29px;
+      right: 0px;
+      background:#FF1110;
+      width:auto;
+      height:auto;
+      padding: 5px;
+      color: #fff;
+    }
+    #datePosted{
+      position: absolute;
+      top: -12px;
+      left: -10px;
+      background:#FCFCFD;
+      width:auto;
+      height:auto;
+      padding: 0  3px;
+      color: #898987;
+      border:1px solid #EEE;
+      border-radius: 10px;
+    }
 
-        }
-        #textBox1,#textBox2{
-          width: 100%;
-          height: 35px;
-          border-radius:3px 3px 0 0 !important;
-          border:1px solid #DDE2DE;
-          font-size: 10pt;
-          text-indent: 15px;
-          background-color:#F4F4F4;
-          color: #537183;
-        }
-        #textBox1:focus,#textBox2:focus{
-        outline: none;
-        }
-        #textBox1:hover,#textBox2:hover{
-        background-color: #FFF;
-        }
-        #textBox2{
-          border-radius: 0px 0px 3px 3px !important;
-        }
-        #OpenRegBTN{
-          margin-top: 6px;
-          width: 100%;
-          height: 30px;
-          border: none;
-          border-radius: 3px !important;
-          background-color: #25A2F7;
-          color: #FFFFFF;
-          font-size: 12pt;
+    #notifyBox{
+      width:85%;
+      margin:0 auto;
+      padding: 5px;
+      height: ;
+      background: red;
+    }
 
-        }
-
-      </style>
-</head>
-<body>
-
-<div id="container">
-       <div id="header">
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
           <h1 style="font-family:century gothic">Primepost</h1>
-        <span id="date">{{tarehe}}</span>
+        <span id="date">Wednesday, 7 June 2017 </span>
       </div>
           <hr>
       <div id="navigation">
           <ul>
             <li><a href="{{url_for('index')}}">home</a></li>
-            <li><a href="{{url_for('posts',id=0)}}">view post</a></li>
+          
           </ul>
           <span id="logOUT">
-            <a href="{{url_for('logout')}}">SignOut</a>
+             <a href="{{url_for('logout')}}">SignOut</a>
           </span>
       </div>
-
-      <div class="container-fluid" style="min-height:100px;width:60%">
-          {%with msgs=get_flashed_messages()%}
+      <br>
+         {%with msgs=get_flashed_messages()%}
               {%if msgs%}
                   {%for msg in msgs%}
-                    <p id="message">{{msg}}</p>
+					<div id="notifyBox">{{msg}}</div>                    
                   {%endfor%}
               {%endif%}
           {%endwith%}
-     </div>
-
-      <div id="contents">
-        {%if posts|length>0 %}
+      
+      <div id="contentBox">
+        
+     {%if posts|length>0 %}
             {%for post in posts%}
-            <div class="card">
-                <div class="posterinfo">
-                  <p class="poster_title">{{post.date}}</p>
-                </div>
-                <div id="content_wrapper">
-            		  <div class="content">
-            		  <p class="poster_content">{{post.content}}</p>
-        		      </div>
-                  <div class="manage">
-                  <div id="operation"><span class="signs">&lt</span><a href="{{url_for('deletePost',id=post.post_id)}}">Delete</a><span class="signs">&gt</span></div>
-                  </div>
-                </div>
-          </div>
-          {%endfor%}
-        {%else%}
-            <div class="card" style="margin:auto;">
-                <div id="item_holder">
-                    <div class="card_content" style="padding:12px;">
-                      <span style="color:#2c3e50;">(info)</span>
-                        Content from this Category are either deleted or not published at all!
-                    </div>
-                </div>
-              </div>
-           </div>
-        {%endif%}
-      </div>
+			 <div id="postViewContainer">
+		      <div id="datePosted">{{post.date}}</div>
+				{{post.content}}
+		        <div id="deleteBtn"><i class="fa fa-trash-o"></i><a href="{{url_for('deletePost',id=post.post_id)}}">delete</a></div>
+             </div>
+     		{%endfor%}
+	 {%endif%}
+    </div><!--closing container tag-->
       <script>
           window.onload=function(e){
-                var closebutton=document.getElementById("message");
+                var closebutton=document.getElementById("notifyBox");
                 closebutton.onclick=function(){
                     closebutton.style.display="none";
                 }
           };
       </script>
-</body>
-<html>
+  </body>
+</html>

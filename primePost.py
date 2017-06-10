@@ -198,7 +198,6 @@ def utilityDate():
     return day
 
 
-
 if __name__=="__main__":
     app.secret_key="haikarose"
     app.run(debug=True,host='0.0.0.0')
